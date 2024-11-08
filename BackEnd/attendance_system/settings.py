@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-)xyb@3wkple6^ioso0t4adbt)p64d_7)kwx7)7qtnnlv5$8#b&"
+SECRET_KEY = "django-insecure-vfy45ycd&umhr8vt2x*2px!jt95*77@k@3t-6j!9^oa+q^pkf9"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,13 +38,19 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "apps.accounts",
-    "apps.attendance",
+    "corsheaders",
+    "accounts",
+    "attendance",
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -78,11 +84,11 @@ WSGI_APPLICATION = "attendance_system.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",  # Use 'mysql' if using mysqlclient
-        "NAME": "attendance_db",  # Your database name
-        "USER": "root",  # Your database username
-        "PASSWORD": "root",  # Your database password
-        "HOST": "localhost",  # Set to empty string for localhost
+        "ENGINE": "django.db.backends.mysql",  # Use MySQL database
+        "NAME": "attendance_db",  # Name of the database you created
+        "USER": "root",  # Your MySQL username
+        "PASSWORD": "root",  # Your MySQL password
+        "HOST": "localhost",  # Use 'localhost' for local MySQL server
         "PORT": "3306",  # Default MySQL port
     }
 }
