@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Handle the logout logic here
-    alert("You have logged out!");
-    navigate("/"); // Redirect to the home page after logging out
+    // Show a toast notification for successful logout
+    toast.success("You have logged out successfully!");
+
+    // Redirect after a short delay
+    setTimeout(() => {
+      navigate("/"); // Redirect to the home page after logging out
+    }, 1000); // 1-second delay for the toast to be visible
   };
 
   return (
@@ -38,6 +45,8 @@ const Dashboard = () => {
           Log Out
         </button>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };
